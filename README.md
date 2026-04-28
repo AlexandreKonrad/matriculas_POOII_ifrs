@@ -40,10 +40,26 @@ Como o projeto é em Java puro, você pode rodá-lo utilizando uma IDE ou via Te
 4. O terminal interativo será aberto na aba de "Console" ou "Run" da sua IDE.
 
 ### Executando via Terminal (PowerShell / CMD)
-Se preferir rodar direto da linha de comando, certifique-se de que os arquivos `.java` estão compilados na pasta `bin`. 
+Para rodar diretamente pela linha de comando, é necessário que você possua o **JDK (Java Development Kit)** instalado e configurado nas variáveis de ambiente (para ter acesso ao comando `javac`).
 
-Acesse a raiz do projeto e execute o comando:
-```bash
+Siga o passo a passo a partir da pasta raiz do projeto (`matricula`):
+
+**Passo 1: Compilar o código**
+Crie uma pasta para armazenar os arquivos compilados e utilize o `javac` para compilar todas as classes do código fonte:
+```powershell
+# Cria a pasta bin (se não existir)
+mkdir bin
+
+# Salva a lista de todos os arquivos .java em um arquivo de texto
+dir /s /B src\*.java > sources.txt
+
+# Compila o código lendo o arquivo com os caminhos
+javac -d bin @sources.txt
+```
+
+**Passo 2: Executar o programa**
+Após compilar (os arquivos `.class` estarão dentro da pasta `bin`), execute a classe principal utilizando o comando `java`:
+```powershell
 java -cp bin com.instituicao.matricula.view.MatriculaView
 ```
 
